@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 10 14 39;
+    --foreground: 228 228 231;
+    --primary: 0 217 255;
+    --primary-dark: 0 168 204;
+    --card: 15 22 41;
+  }
+
+  * {
+    border-color: rgb(var(--primary) / 0.2);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: rgb(10 14 39);
+    color: rgb(228 228 231);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: rgb(10 14 39);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(0 217 255 / 0.3);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(0 217 255 / 0.5);
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism effect */
+  .glass {
+    backdrop-filter: blur(12px);
+    background-color: rgb(15 22 41 / 0.3);
+    border: 1px solid rgb(255 255 255 / 0.1);
+  }
+
+  .glass-elevated {
+    backdrop-filter: blur(16px);
+    background-color: rgb(26 31 58 / 0.4);
+    border: 1px solid rgb(0 217 255 / 0.2);
+    box-shadow: 0 8px 32px rgb(0 217 255 / 0.1);
+  }
+
+  /* Text gradients */
+  .text-gradient {
+    background: linear-gradient(to right, rgb(0 217 255), rgb(51 228 255), rgb(0 217 255));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: 0 4px 24px rgb(0 217 255 / 0.25);
+  }
+
+  /* Focus states */
+  .focus-ring {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+  .focus-ring:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgb(10 14 39), 0 0 0 4px rgb(0 217 255);
+  }
+}

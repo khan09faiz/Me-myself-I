@@ -1,0 +1,179 @@
+[
+  {
+    "id": "ongc-intern",
+    "type": "work",
+    "title": "SAP ABAP/AI Intern",
+    "organization": "Oil and Natural Gas Corporation (ONGC)",
+    "location": "Delhi, India",
+    "startDate": "2025-06",
+    "endDate": "2025-08",
+    "description": [
+      "Developed SAP HANA dashboard for integrated reporting and data visualization",
+      "Processed 8M+ data points using Python, PyTorch, and FAISS for intelligent analytics",
+      "Reduced reporting time by 40% through optimized data pipelines and automation",
+      "Implemented PowerBI visualizations for real-time business intelligence",
+      "Collaborated with cross-functional teams on enterprise data management"
+    ],
+    "technologies": [
+      "SAP ABAP",
+      "SAP HANA",
+      "Python",
+      "PyTorch",
+      "FAISS",
+      "PowerBI"
+    ]
+  },
+  {
+    "id": "tenet-intern",
+    "type": "work",
+    "title": "Software Engineer Intern",
+    "organization": "Tenet Networks",
+    "location": "Noida, India",
+    "startDate": "2024-05",
+    "endDate": "2024-07",
+    "description": [
+      "Built TensorFlow-based chatbot increasing user satisfaction by 20% and query speed by 35%",
+      "Optimized React website performance, reducing page load time by 60% and bounce rate by 40%",
+      "Implemented responsive UI components with modern design patterns",
+      "Received Pre-Placement Offer (PPO) for outstanding performance",
+      "Collaborated on full-stack development using React and backend APIs"
+    ],
+    "technologies": [
+      "TensorFlow",
+      "React",
+      "JavaScript",
+      "Python",
+      "FastAPI",
+      "Git"
+    ]
+  },
+  {
+    "id": "education-manipal",
+    "type": "education",
+    "title": "Bachelor of Technology in Computer Science (AI & ML)",
+    "organization": "Manipal University Jaipur",
+    "location": "Jaipur, India",
+    "startDate": "2022-09",
+    "endDate": "2026-07",
+    "description": [
+      "Specialization in Artificial Intelligence and Machine Learning",
+      "Relevant Coursework: Machine Learning, Deep Learning, Computer Vision, NLP, Reinforcement Learning, Data Structures, Algorithms",
+      "Worked on advanced projects: GIG (Federated Learning + Blockchain), Stock Market Framework (Time Series + RL), Blind Cap (Computer Vision)",
+      "Active participation in technical clubs and AI/ML competitions",
+      "Strong foundation in mathematics, statistics, and programming"
+    ],
+    "technologies": [
+      "Python",
+      "TensorFlow",
+      "PyTorch",
+      "React",
+      "Django",
+      "FastAPI"
+    ]
+  },
+  {
+    "id": "cert-aiml-nptel",
+    "type": "achievement",
+    "title": "AI & Machine Learning Certification",
+    "organization": "NPTEL (IIT)",
+    "location": "Online",
+    "startDate": "2024-01",
+    "endDate": "2024-04",
+    "description": [
+      "Comprehensive course on AI and ML fundamentals from IIT professors",
+      "Topics: Neural Networks, Deep Learning, Optimization, Model Evaluation",
+      "Hands-on projects on classification, regression, and clustering",
+      "Top 5% score in final examination"
+    ],
+    "technologies": [
+      "Python",
+      "TensorFlow",
+      "Scikit-learn",
+      "NumPy"
+    ]
+  },
+  {
+    "id": "cert-probability-coursera",
+    "type": "achievement",
+    "title": "Probability & Statistics Certification",
+    "organization": "Coursera (Stanford University)",
+    "location": "Online",
+    "startDate": "2023-09",
+    "endDate": "2023-12",
+    "description": [
+      "Advanced probability theory and statistical methods",
+      "Hypothesis testing, regression analysis, Bayesian inference",
+      "Applications in machine learning and data science",
+      "Essential foundation for AI/ML model development"
+    ],
+    "technologies": [
+      "Python",
+      "R",
+      "Statistics",
+      "Mathematics"
+    ]
+  },
+  {
+    "id": "cert-computer-vision",
+    "type": "achievement",
+    "title": "Computer Vision Certification",
+    "organization": "Coursera",
+    "location": "Online",
+    "startDate": "2024-03",
+    "endDate": "2024-05",
+    "description": [
+      "Deep learning for computer vision applications",
+      "CNNs, object detection (YOLO, R-CNN), image segmentation",
+      "Hands-on projects on image classification and real-time detection",
+      "Applied knowledge in Blind Cap project (97% accuracy)"
+    ],
+    "technologies": [
+      "Python",
+      "TensorFlow",
+      "OpenCV",
+      "YOLOv8"
+    ]
+  },
+  {
+    "id": "cert-dsa-nptel",
+    "type": "achievement",
+    "title": "Data Structures & Algorithms Certification",
+    "organization": "NPTEL (IIT)",
+    "location": "Online",
+    "startDate": "2023-01",
+    "endDate": "2023-04",
+    "description": [
+      "Comprehensive coverage of DSA fundamentals",
+      "Trees, graphs, dynamic programming, greedy algorithms",
+      "Algorithm complexity analysis and optimization",
+      "Strong foundation for efficient code implementation"
+    ],
+    "technologies": [
+      "Python",
+      "C++",
+      "Algorithms",
+      "Data Structures"
+    ]
+  },
+  {
+    "id": "cert-rdbms-oracle",
+    "type": "achievement",
+    "title": "RDBMS Certification",
+    "organization": "Oracle Academy",
+    "location": "Online",
+    "startDate": "2023-06",
+    "endDate": "2023-08",
+    "description": [
+      "Relational database design and management",
+      "SQL queries, indexing, normalization, transactions",
+      "Database optimization and performance tuning",
+      "Applied in SAP HANA projects at ONGC"
+    ],
+    "technologies": [
+      "SQL",
+      "Oracle",
+      "PostgreSQL",
+      "MySQL"
+    ]
+  }
+]

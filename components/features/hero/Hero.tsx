@@ -1,0 +1,335 @@
+/**
+ * Hero Component
+ * Main hero section with animated code, rotating roles, and stats
+ */
+
+'use client'
+
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Button } from '@/components/ui/Button'
+import { Card } from '@/components/ui/Card'
+import { StatCard, StatCardGrid } from '@/components/ui/StatCard'
+import { 
+  Github, 
+  Linkedin, 
+  Mail, 
+  Code2, 
+  Rocket, 
+  Users, 
+  Award,
+  ChevronDown,
+  ExternalLink 
+} from 'lucide-react'
+import { SITE_CONFIG } from '@/lib/constants'
+import Link from 'next/link'
+
+// Code snippet for typing animation
+const codeSnippet = `const developer = {
+  name: "${SITE_CONFIG.name}",
+  role: "${SITE_CONFIG.title}",
+  location: "${SITE_CONFIG.person.location}",
+  
+  passions: [
+    "Machine Learning",
+    "Computer Vision", 
+    "Full Stack Dev"
+  ],
+  
+  build: async () => {
+    const skills = await this.learn();
+    const projects = this.create(skills);
+    return this.deploy(projects);
+  }
+};
+
+developer.build();`
+
+// Rotating roles
+const roles = [
+  'AI/ML Engineer',
+  'Full Stack Developer',
+  'Problem Solver',
+  'Code Enthusiast',
+]
+
+// Stats data
+const stats = [
+  { icon: Code2, value: '7+', label: 'Projects', color: 'text-blue-500', fill: 'fill-blue-500/20' },
+  { icon: Rocket, value: '60+', label: 'Technologies', color: 'text-purple-500', fill: 'fill-purple-500/20' },
+  { icon: Users, value: '10K+', label: 'Impact', color: 'text-green-500', fill: 'fill-green-500/20' },
+  { icon: Award, value: '3+', label: 'Achievements', color: 'text-orange-500', fill: 'fill-orange-500/20' },
+]
+
+// Highlights
+const highlights = [
+  {
+    title: 'AI/ML Expertise',
+    description: 'Deep learning, computer vision, and NLP with TensorFlow & PyTorch',
+    gradient: 'from-blue-500/20 to-cyan-500/20',
+  },
+  {
+    title: 'Full Stack Development',
+    description: 'Modern web apps with React, Next.js, Node.js, and PostgreSQL',
+    gradient: 'from-purple-500/20 to-pink-500/20',
+  },
+  {
+    title: 'Production Ready',
+    description: 'Scalable solutions with Docker, AWS, and CI/CD pipelines',
+    gradient: 'from-green-500/20 to-emerald-500/20',
+  },
+]
+
+export function Hero() {
+  const [currentRole, setCurrentRole] = useState(0)
+  const [displayedCode, setDisplayedCode] = useState('')
+  const [isTyping, setIsTyping] = useState(true)
+
+  // Rotate roles
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentRole((prev) => (prev + 1) % roles.length)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
+
+  // Typing animation for code
+  useEffect(() => {
+    if (!isTyping) return
+
+    let currentIndex = 0
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= codeSnippet.length) {
+        setDisplayedCode(codeSnippet.slice(0, currentIndex))
+        currentIndex++
+      } else {
+        setIsTyping(false)
+        clearInterval(typingInterval)
+      }
+    }, 30)
+
+    return () => clearInterval(typingInterval)
+  }, [isTyping])
+
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById('projects')
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  return (
+    <section className="min-h-screen relative overflow-hidden flex items-center">
+      {/* Background gradient effects */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
+      <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+
+      <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Left Column - Text Content */}
+          <div className="space-y-6 text-center lg:text-left">
+            {/* Greeting */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="text-primary text-base sm:text-lg font-mono">
+                {'<'} Hello World {'/>'} 👋
+              </span>
+            </motion.div>
+
+            {/* Name */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold"
+            >
+              <span className="text-gradient">{SITE_CONFIG.name}</span>
+            </motion.h1>
+
+            {/* Rotating Role */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="h-12 sm:h-16"
+            >
+              <AnimatePresence mode="wait">
+                <motion.h2
+                  key={currentRole}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary"
+                >
+                  {roles[currentRole]}
+                </motion.h2>
+              </AnimatePresence>
+            </motion.div>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+            >
+              {SITE_CONFIG.person.bio}
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex flex-wrap gap-4 justify-center lg:justify-start"
+            >
+              <Link href="/projects">
+                <Button size="lg" icon={<Rocket className="h-5 w-5" />}>
+                  View Projects
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  icon={<Mail className="h-5 w-5" />}
+                >
+                  Get in Touch
+                </Button>
+              </Link>
+            </motion.div>
+
+            {/* Social Links */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="flex gap-4 justify-center lg:justify-start"
+            >
+              <a
+                href={SITE_CONFIG.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-lg bg-card/30 border border-primary/10 hover:border-primary/30 hover:shadow-glow-sm transition-all duration-300"
+              >
+                <Github className="h-5 w-5" />
+              </a>
+              <a
+                href={SITE_CONFIG.links.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-lg bg-card/30 border border-primary/10 hover:border-primary/30 hover:shadow-glow-sm transition-all duration-300"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a
+                href={`mailto:${SITE_CONFIG.contact.email}`}
+                className="p-3 rounded-lg bg-card/30 border border-primary/10 hover:border-primary/30 hover:shadow-glow-sm transition-all duration-300"
+              >
+                <Mail className="h-5 w-5" />
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Right Column - Code Card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <Card variant="elevated" className="overflow-hidden">
+              {/* Terminal Header */}
+              <div className="flex items-center gap-2 mb-4 pb-3 border-b border-primary/10">
+                <div className="flex gap-1.5">
+                  <div className="w-3 h-3 rounded-full bg-red-500" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                  <div className="w-3 h-3 rounded-full bg-green-500" />
+                </div>
+                <span className="text-xs text-muted-foreground font-mono">
+                  ~/developer.ts
+                </span>
+              </div>
+
+              {/* Code Block */}
+              <pre className="text-xs sm:text-sm font-mono overflow-x-auto">
+                <code className="text-foreground/90">
+                  {displayedCode}
+                  {isTyping && (
+                    <span className="inline-block w-2 h-4 bg-primary ml-1 animate-blink" />
+                  )}
+                </code>
+              </pre>
+            </Card>
+          </motion.div>
+        </div>
+
+        {/* Stats Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-16 lg:mt-24"
+        >
+          <StatCardGrid columns={4} className="max-w-4xl mx-auto">
+            {stats.map((stat, index) => (
+              <StatCard
+                key={stat.label}
+                icon={stat.icon}
+                value={stat.value}
+                label={stat.label}
+                color={stat.color}
+                fill={stat.fill}
+                index={index}
+              />
+            ))}
+          </StatCardGrid>
+        </motion.div>
+
+        {/* Highlights Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+          className="mt-16 lg:mt-20 grid md:grid-cols-3 gap-6"
+        >
+          {highlights.map((highlight, index) => (
+            <Card
+              key={highlight.title}
+              hover
+              className={`bg-gradient-to-br ${highlight.gradient} backdrop-blur-md`}
+            >
+              <h3 className="text-lg font-bold mb-2 text-foreground">
+                {highlight.title}
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                {highlight.description}
+              </p>
+            </Card>
+          ))}
+        </motion.div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 1 }}
+          className="mt-16 flex justify-center"
+        >
+          <button
+            onClick={scrollToProjects}
+            className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-300"
+            aria-label="Scroll to projects"
+          >
+            <span className="text-sm">Explore More</span>
+            <ChevronDown className="h-6 w-6 animate-bounce" />
+          </button>
+        </motion.div>
+      </div>
+    </section>
+  )
+}

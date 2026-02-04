@@ -1,0 +1,110 @@
+[
+  {
+    "id": "gig-idea-generation",
+    "title": "GIG - Greatest Idea Generation",
+    "description": "Decentralized idea generation platform using blockchain, federated learning, and LLMs to process 127 ideas per second with 100% data integrity.",
+    "longDescription": "Built a revolutionary decentralized platform for idea generation that combines blockchain technology with federated learning and multiple LLMs (Ollama). The system ensures user privacy through federated learning while maintaining data integrity using SHA-256 blockchain consensus. Implemented FAISS for intelligent idea clustering and semantic search. The platform can process and analyze 127 ideas per second while preserving user ownership and intellectual property rights through immutable blockchain records.",
+    "category": "AI/ML",
+    "featured": true,
+    "technologies": [
+      "Python",
+      "FastAPI",
+      "Ollama",
+      "Blockchain",
+      "Federated Learning",
+      "FAISS",
+      "Docker",
+      "React"
+    ],
+    "links": {
+      "github": "https://github.com/khan09faiz/Idea-Recommendation-model-"
+    },
+    "date": "2025-09-01",
+    "keyFeatures": [
+      "Decentralized architecture with blockchain consensus",
+      "Federated learning for privacy-preserving model training",
+      "Multi-LLM integration using Ollama",
+      "FAISS-powered semantic search and clustering",
+      "Real-time idea processing at 127 ideas/second",
+      "SHA-256 blockchain for immutable idea records",
+      "100% data integrity guarantee"
+    ],
+    "impact": [
+      { "label": "Processing Speed", "value": "127 ideas/sec" },
+      { "label": "Data Integrity", "value": "100%" },
+      { "label": "User Privacy", "value": "Federated" }
+    ]
+  },
+  {
+    "id": "unified-stock-market",
+    "title": "Unified Stock Market Framework",
+    "description": "Advanced algorithmic trading framework combining SARIMA-GARCH time series forecasting, FinBERT sentiment analysis, and PPO reinforcement learning for 15.6% returns.",
+    "longDescription": "Developed a comprehensive algorithmic trading framework that unifies three powerful approaches: SARIMA-GARCH for time series forecasting, FinBERT for financial sentiment analysis, and Proximal Policy Optimization (PPO) for reinforcement learning-based trading decisions. The system achieved 15.6% returns with a Sharpe ratio of 0.89, outperforming traditional buy-and-hold strategy by 3.3%. Implemented robust backtesting, risk management, and real-time market data processing. Containerized with Docker for easy deployment and scalability.",
+    "category": "AI/ML",
+    "featured": true,
+    "technologies": [
+      "Python",
+      "SARIMA",
+      "GARCH",
+      "FinBERT",
+      "PPO",
+      "Reinforcement Learning",
+      "Docker",
+      "Pandas",
+      "NumPy"
+    ],
+    "links": {
+      "github": "https://github.com/khan09faiz/Unified-stock-market"
+    },
+    "date": "2025-02-01",
+    "keyFeatures": [
+      "SARIMA-GARCH time series forecasting",
+      "FinBERT sentiment analysis from financial news",
+      "PPO reinforcement learning for trading decisions",
+      "Comprehensive backtesting framework",
+      "Risk management with position sizing",
+      "Real-time market data integration",
+      "Docker containerization for deployment"
+    ],
+    "impact": [
+      { "label": "Total Returns", "value": "15.6%" },
+      { "label": "Sharpe Ratio", "value": "0.89" },
+      { "label": "Outperformance", "value": "+3.3%" }
+    ]
+  },
+  {
+    "id": "blind-cap",
+    "title": "Blind Cap - Accessibility Wearable",
+    "description": "YOLOv8-powered wearable device for visually impaired users, achieving 97% detection accuracy with audio and haptic feedback for enhanced navigation.",
+    "longDescription": "Designed and developed an innovative wearable assistive device for visually impaired individuals using YOLOv8 for real-time object detection and OpenCV for computer vision processing. The system runs on Raspberry Pi 4, processing video at 30 FPS with 97% object detection accuracy. Provides multi-modal feedback through audio descriptions and haptic signals to guide users safely. Field tested with 15 users who reported 60% improvement in navigation confidence. Built with a $50 bill of materials, making it an affordable accessibility solution. Operates completely offline for reliability and privacy.",
+    "category": "AI/ML",
+    "featured": true,
+    "technologies": [
+      "Python",
+      "YOLOv8",
+      "OpenCV",
+      "Raspberry Pi",
+      "TensorFlow Lite",
+      "Audio Feedback",
+      "Haptic Feedback"
+    ],
+    "links": {
+      "github": "https://github.com/khan09faiz/blind-cap-object-detection"
+    },
+    "date": "2024-03-01",
+    "keyFeatures": [
+      "YOLOv8 real-time object detection at 30 FPS",
+      "Multi-modal feedback (audio + haptic)",
+      "Raspberry Pi 4 edge deployment",
+      "Offline operation for reliability",
+      "Low-cost design ($50 BOM)",
+      "97% detection accuracy",
+      "User-tested with 15 visually impaired individuals"
+    ],
+    "impact": [
+      { "label": "Detection Accuracy", "value": "97%" },
+      { "label": "Navigation Improvement", "value": "60%" },
+      { "label": "Users Tested", "value": "15" }
+    ]
+  }
+]

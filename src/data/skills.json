@@ -1,0 +1,108 @@
+[
+  {
+    "category": "AI/ML Development",
+    "proficiency": 92,
+    "color": "#3b82f6",
+    "skills": [
+      "TensorFlow",
+      "PyTorch",
+      "Scikit-learn",
+      "Computer Vision",
+      "YOLOv8",
+      "OpenCV",
+      "FinBERT",
+      "NLP",
+      "Reinforcement Learning",
+      "Time Series Forecasting",
+      "FAISS",
+      "Federated Learning"
+    ]
+  },
+  {
+    "category": "Frontend Development",
+    "proficiency": 85,
+    "color": "#8b5cf6",
+    "skills": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "Tailwind CSS",
+      "HTML5",
+      "CSS3",
+      "Framer Motion",
+      "Redux",
+      "Zustand"
+    ]
+  },
+  {
+    "category": "Backend Development",
+    "proficiency": 88,
+    "color": "#10b981",
+    "skills": [
+      "Python",
+      "Django",
+      "FastAPI",
+      "Flask",
+      "Node.js",
+      "Express",
+      "SAP ABAP",
+      "REST API",
+      "GraphQL"
+    ]
+  },
+  {
+    "category": "Database & Storage",
+    "proficiency": 85,
+    "color": "#f59e0b",
+    "skills": [
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
+      "SAP HANA",
+      "SQLite",
+      "Redis"
+    ]
+  },
+  {
+    "category": "Cloud & DevOps",
+    "proficiency": 82,
+    "color": "#ef4444",
+    "skills": [
+      "Azure",
+      "AWS",
+      "Docker",
+      "Git",
+      "GitHub Actions",
+      "Linux"
+    ]
+  },
+  {
+    "category": "Data Science & Analytics",
+    "proficiency": 87,
+    "color": "#06b6d4",
+    "skills": [
+      "Pandas",
+      "NumPy",
+      "Matplotlib",
+      "SARIMA",
+      "GARCH",
+      "PowerBI",
+      "Statistical Modeling",
+      "Data Visualization"
+    ]
+  },
+  {
+    "category": "Specialized AI",
+    "proficiency": 90,
+    "color": "#ec4899",
+    "skills": [
+      "Blockchain",
+      "PPO (Proximal Policy Optimization)",
+      "Ollama LLMs",
+      "Raspberry Pi",
+      "Edge AI",
+      "Real-time Processing"
+    ]
+  }
+]
