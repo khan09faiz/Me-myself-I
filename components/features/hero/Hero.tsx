@@ -125,17 +125,17 @@ export function Hero() {
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
 
-      <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12 sm:py-16">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Column - Text Content */}
-          <div className="space-y-6 text-center lg:text-left">
+          <div className="space-y-4 sm:space-y-6 text-center lg:text-left">
             {/* Greeting */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-primary text-base sm:text-lg font-mono">
+              <span className="text-primary text-sm sm:text-base md:text-lg font-mono">
                 {'<'} Hello World {'/>'} 👋
               </span>
             </motion.div>
@@ -145,7 +145,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight"
             >
               <span className="text-gradient">{SITE_CONFIG.name}</span>
             </motion.h1>
@@ -155,7 +155,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="h-12 sm:h-16"
+              className="h-10 sm:h-12 md:h-16"
             >
               <AnimatePresence mode="wait">
                 <motion.h2
@@ -164,7 +164,7 @@ export function Hero() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5 }}
-                  className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary"
+                  className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary"
                 >
                   {roles[currentRole]}
                 </motion.h2>
@@ -176,7 +176,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+              className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed"
             >
               {SITE_CONFIG.person.bio}
             </motion.p>
@@ -247,11 +247,11 @@ export function Hero() {
               </div>
 
               {/* Code Block */}
-              <pre className="text-xs sm:text-sm font-mono overflow-x-auto">
-                <code className="text-foreground/90">
+              <pre className="text-[10px] xs:text-xs sm:text-sm font-mono overflow-x-auto max-h-[60vh] sm:max-h-none scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
+                <code className="text-foreground/90 block">
                   {displayedCode}
                   {isTyping && (
-                    <span className="inline-block w-2 h-4 bg-primary ml-1 animate-blink" />
+                    <span className="inline-block w-1.5 h-3 sm:w-2 sm:h-4 bg-primary ml-1 animate-blink" />
                   )}
                 </code>
               </pre>

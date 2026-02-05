@@ -43,22 +43,18 @@ export function ContactSection() {
     setIsSubmitting(true)
 
     try {
-      // EmailJS configuration
+      // EmailJS configuration from environment variables
       // You need to:
       // 1. Sign up at https://www.emailjs.com/
       // 2. Create an email service
       // 3. Create an email template
-      // 4. Replace these with your actual IDs
-      const SERVICE_ID = 'service_jugpf9y'
-      const TEMPLATE_ID = 'template_leq7iys'
-      const PUBLIC_KEY = 'dALDPj8WV_A--sT6O'
+      // 4. Add keys to .env.local file
+      const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || ''
+      const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || ''
+      const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
 
       // Check if EmailJS is configured
-      if (
-        SERVICE_ID === 'YOUR_SERVICE_ID' ||
-        TEMPLATE_ID === 'YOUR_TEMPLATE_ID' ||
-        PUBLIC_KEY === 'YOUR_PUBLIC_KEY'
-      ) {
+      if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
         // Demo mode - show success toast without actually sending
         await new Promise((resolve) => setTimeout(resolve, 1500))
         toast.success(

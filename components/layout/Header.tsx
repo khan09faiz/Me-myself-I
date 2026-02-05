@@ -7,6 +7,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { SITE_CONFIG, NAV_ITEMS } from '@/lib/constants'
@@ -114,14 +115,19 @@ export function Header() {
               className="flex items-center space-x-2 group"
             >
               <div className="relative">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center group-hover:border-primary/50 group-hover:shadow-glow-sm transition-all">
-                  <span className="text-primary font-bold text-xl">
-                    {SITE_CONFIG.name.split(' ').map((n) => n[0]).join('')}
-                  </span>
+                <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/30 group-hover:border-primary/50 group-hover:shadow-glow-sm transition-all">
+                  <Image
+                    src="/profile.jpeg"
+                    alt={SITE_CONFIG.name}
+                    width={40}
+                    height={40}
+                    className="object-cover w-full h-full scale-110"
+                    priority
+                  />
                 </div>
               </div>
               <span className="font-bold text-lg text-foreground hidden sm:block">
-                {SITE_CONFIG.name.split(' ')[0]}
+                Faiz
               </span>
             </Link>
 
