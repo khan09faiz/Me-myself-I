@@ -6,7 +6,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Briefcase, GraduationCap, Award, Calendar } from 'lucide-react'
+import { Briefcase, GraduationCap, Award, Calendar, CheckCircle2 } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import TechIcon from '@/components/ui/TechIcon'
 import { Card } from '@/components/ui/Card'
@@ -47,142 +47,239 @@ const formatDate = (dateString: string) => {
 }
 
 export function TimelineSection() {
-  // Sort timeline by date (newest first)
-  const sortedTimeline = [...timelineData].sort(
-    (a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
-  )
+  // Separate items by type
+  const workExperience = timelineData
+    .filter((item) => item.type === 'work')
+    .sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime())
+  
+  const education = timelineData
+    .filter((item) => item.type === 'education')
+    .sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime())
+  
+  const certificates = timelineData
+    .filter((item) => item.type === 'achievement')
+    .sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime())
 
   return (
     <section id="timeline" className="py-20">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <SectionHeader
           terminalPath="~/career"
-          title="Career Timeline"
-          description="Professional journey, education, and key achievements"
+          title="Career Journey"
+          description="Professional experience, education, and certifications"
         />
 
-        {/* Timeline */}
-        <div className="mt-12 space-y-8">
-          {sortedTimeline.map((item, index) => {
-            const Icon = getIcon(item.type)
-            const isLeft = index % 2 === 0
-
-            return (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, x: isLeft ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative"
-              >
-                {/* Connecting Line */}
-                {index < sortedTimeline.length - 1 && (
-                  <div className="absolute left-[27px] top-[60px] w-0.5 h-[calc(100%+2rem)] bg-gradient-to-b from-primary/50 to-transparent hidden md:block" />
-                )}
-
-                <div className="flex gap-6 items-start">
-                  {/* Icon */}
-                  <div className={`flex-shrink-0 w-14 h-14 rounded-full ${getTypeColor(item.type)} flex items-center justify-center border border-primary/20 shadow-glow`}>
-                    <Icon className="h-6 w-6" />
-                  </div>
-
-                  {/* Content Card */}
-                  <Card hover variant="elevated" className="flex-1">
-                    {/* Header */}
-                    <div className="mb-3">
-                      <div className="flex flex-wrap items-center gap-2 mb-2">
-                        <h3 className="text-xl font-bold text-foreground">
-                          {item.title}
-                        </h3>
-                        <span className="text-sm text-muted-foreground">
-                          @ {item.organization}
-                        </span>
-                      </div>
-                      
-                      <div className="flex flex-wrap gap-3 text-sm text-muted-foreground">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="h-4 w-4" />
-                          {formatDate(item.startDate)} -{' '}
-                          {item.endDate ? formatDate(item.endDate) : 'Present'}
-                        </span>
-                        {item.location && (
-                          <span>📍 {item.location}</span>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Description */}
-                    {item.description && item.description.length > 0 && (
-                      <ul className="space-y-2 mb-4">
-                        {item.description.map((desc, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                            <span className="text-primary mt-1">▹</span>
-                            <span>{desc}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-
-                    {/* Technologies */}
-                    {item.technologies && item.technologies.length > 0 && (
-                      <div className="flex flex-wrap gap-2">
-                        {item.technologies.map((tech, i) => (
-                          <div
-                            key={i}
-                            className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-primary/10 border border-primary/20 hover:border-primary/30 transition-colors"
-                          >
-                            <TechIcon name={tech} className="h-3.5 w-3.5" />
-                            <span className="text-xs text-foreground/90">{tech}</span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </Card>
-                </div>
-              </motion.div>
-            )
-          })}
-        </div>
-
-        {/* Summary Stats */}
+        {/* Work Experience Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-12 grid grid-cols-3 gap-4"
+          transition={{ duration: 0.5 }}
+          className="mt-12"
         >
-          {[
-            {
-              label: 'Work Experience',
-              count: timelineData.filter((item) => item.type === 'work').length,
-              color: 'text-blue-400',
-            },
-            {
-              label: 'Education',
-              count: timelineData.filter((item) => item.type === 'education').length,
-              color: 'text-purple-400',
-            },
-            {
-              label: 'Achievements',
-              count: timelineData.filter((item) => item.type === 'achievement').length,
-              color: 'text-yellow-400',
-            },
-          ].map((stat) => (
-            <div
-              key={stat.label}
-              className="bg-card/20 backdrop-blur-sm border border-primary/10 rounded-lg p-4 text-center"
-            >
-              <div className={`text-3xl font-bold mb-1 ${stat.color}`}>
-                {stat.count}
-              </div>
-              <div className="text-sm text-muted-foreground">
-                {stat.label}
-              </div>
-            </div>
-          ))}
+          <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+            <Briefcase className="h-6 w-6 text-blue-400" />
+            Work Experience
+          </h3>
+          <div className="space-y-6">
+            {workExperience.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card hover variant="elevated">
+                  <div className="mb-3">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <h4 className="text-xl font-bold text-foreground">
+                        {item.title}
+                      </h4>
+                      <span className="text-sm text-muted-foreground">
+                        @ {item.organization}
+                      </span>
+                    </div>
+                    
+                    <div className="flex flex-wrap gap-3 text-sm text-muted-foreground">
+                      <span className="flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        {formatDate(item.startDate)} -{' '}
+                        {item.endDate ? formatDate(item.endDate) : 'Present'}
+                      </span>
+                      {item.location && (
+                        <span>📍 {item.location}</span>
+                      )}
+                    </div>
+                  </div>
+
+                  {item.description && item.description.length > 0 && (
+                    <ul className="space-y-2 mb-4">
+                      {item.description.map((desc, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                          <span className="text-primary mt-1">▹</span>
+                          <span>{desc}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {item.technologies && item.technologies.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {item.technologies.map((tech, i) => (
+                        <div
+                          key={i}
+                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-primary/10 border border-primary/20 hover:border-primary/30 transition-colors"
+                        >
+                          <TechIcon name={tech} className="h-3.5 w-3.5" />
+                          <span className="text-xs text-foreground/90">{tech}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Education Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-16"
+        >
+          <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+            <GraduationCap className="h-6 w-6 text-purple-400" />
+            Education
+          </h3>
+          <div className="space-y-6">
+            {education.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card hover variant="elevated">
+                  <div className="mb-3">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <h4 className="text-xl font-bold text-foreground">
+                        {item.title}
+                      </h4>
+                      <span className="text-sm text-muted-foreground">
+                        @ {item.organization}
+                      </span>
+                    </div>
+                    
+                    <div className="flex flex-wrap gap-3 text-sm text-muted-foreground">
+                      <span className="flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        {formatDate(item.startDate)} -{' '}
+                        {item.endDate ? formatDate(item.endDate) : 'Present'}
+                      </span>
+                      {item.location && (
+                        <span>📍 {item.location}</span>
+                      )}
+                    </div>
+                  </div>
+
+                  {item.description && item.description.length > 0 && (
+                    <ul className="space-y-2 mb-4">
+                      {item.description.map((desc, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                          <span className="text-primary mt-1">▹</span>
+                          <span>{desc}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {item.technologies && item.technologies.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {item.technologies.map((tech, i) => (
+                        <div
+                          key={i}
+                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-primary/10 border border-primary/20 hover:border-primary/30 transition-colors"
+                        >
+                          <TechIcon name={tech} className="h-3.5 w-3.5" />
+                          <span className="text-xs text-foreground/90">{tech}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Certificates Section - Small Boxes */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-16"
+        >
+          <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+            <Award className="h-6 w-6 text-yellow-400" />
+            Certifications & Achievements
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {certificates.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+              >
+                <Card hover variant="elevated" className="h-full">
+                  <div className="flex items-start gap-3 mb-3">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-yellow-500/20 border border-yellow-500/30 flex items-center justify-center">
+                      <CheckCircle2 className="h-5 w-5 text-yellow-400" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-bold text-foreground text-sm line-clamp-2 mb-1">
+                        {item.title}
+                      </h4>
+                      <p className="text-xs text-muted-foreground line-clamp-1">
+                        {item.organization}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="text-xs text-muted-foreground mb-3 flex items-center gap-1">
+                    <Calendar className="h-3 w-3" />
+                    {formatDate(item.startDate)}
+                  </div>
+
+                  {item.technologies && item.technologies.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5">
+                      {item.technologies.slice(0, 3).map((tech, i) => (
+                        <span
+                          key={i}
+                          className="px-2 py-0.5 text-xs rounded bg-primary/10 border border-primary/20 text-foreground/80"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {item.technologies.length > 3 && (
+                        <span className="px-2 py-0.5 text-xs rounded bg-primary/10 border border-primary/20 text-foreground/80">
+                          +{item.technologies.length - 3}
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

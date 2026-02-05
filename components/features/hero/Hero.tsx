@@ -193,15 +193,6 @@ export function Hero() {
                   View Projects
                 </Button>
               </Link>
-              <Link href="/contact">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  icon={<Mail className="h-5 w-5" />}
-                >
-                  Get in Touch
-                </Button>
-              </Link>
             </motion.div>
 
             {/* Social Links */}

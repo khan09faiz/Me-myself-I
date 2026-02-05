@@ -23,10 +23,11 @@ export function Header() {
       setIsScrolled(window.scrollY > 50)
 
       // Update active section based on scroll position
-      const sections = NAV_ITEMS.map((item) => item.href.replace('/', ''))
+      const sections = NAV_ITEMS.map((item) => item.href.replace(/^\/?#?/, ''))
       let current = ''
 
       for (const section of sections) {
+        if (section === '' || section === 'github') continue
         const element = document.getElementById(section)
         if (element) {
           const rect = element.getBoundingClientRect()
@@ -62,12 +63,20 @@ export function Header() {
   const scrollToSection = (href: string) => {
     setIsMobileMenuOpen(false)
     
-    if (href === '/') {
+    if (href === '/' || href === '') {
       window.scrollTo({ top: 0, behavior: 'smooth' })
       return
     }
 
-    const sectionId = href.replace('/', '')
+    // Handle both /section and /#section formats
+    const sectionId = href.replace(/^\/?#?/, '')
+    
+    // Special handling for github route
+    if (sectionId === 'github') {
+      window.location.href = '/github'
+      return
+    }
+    
     const element = document.getElementById(sectionId)
     if (element) {
       const offset = 80
@@ -119,7 +128,7 @@ export function Header() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-1">
               {NAV_ITEMS.map((item) => {
-                const sectionId = item.href.replace('/', '')
+                const sectionId = item.href.replace(/^\/?#?/, '')
                 const isActive = activeSection === sectionId || (item.href === '/' && !activeSection)
 
                 return (
@@ -147,19 +156,6 @@ export function Header() {
                   </Link>
                 )
               })}
-            </div>
-
-            {/* CTA Button */}
-            <div className="hidden md:block">
-              <Link
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault()
-                  scrollToSection('/contact')
-                }}
-              >
-                <Button size="sm">Get in Touch</Button>
-              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -203,7 +199,7 @@ export function Header() {
                 {/* Navigation Links */}
                 <nav className="space-y-2">
                   {NAV_ITEMS.map((item, index) => {
-                    const sectionId = item.href.replace('/', '')
+                    const sectionId = item.href.replace(/^\/?#?/, '')
                     const isActive = activeSection === sectionId || (item.href === '/' && !activeSection)
 
                     return (
@@ -231,23 +227,6 @@ export function Header() {
                     )
                   })}
                 </nav>
-
-                {/* Mobile CTA */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: NAV_ITEMS.length * 0.1 }}
-                >
-                  <Link
-                    href="#contact"
-                    onClick={(e) => {
-                      e.preventDefault()
-                      scrollToSection('/contact')
-                    }}
-                  >
-                    <Button className="w-full">Get in Touch</Button>
-                  </Link>
-                </motion.div>
 
                 {/* Social Links */}
                 <motion.div
