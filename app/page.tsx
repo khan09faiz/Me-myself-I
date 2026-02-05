@@ -2,6 +2,7 @@ import { Hero } from '@/components/features/hero/Hero'
 import { ProjectsSection } from '@/components/features/projects'
 import { SkillsSection } from '@/components/features/skills'
 import { TimelineSection } from '@/components/features/timeline'
+import { GitHubSection } from '@/components/features/github'
 import { ContactSection } from '@/components/features/contact'
 import { ScrollIndicator } from '@/components/ui/ScrollIndicator'
 
@@ -14,6 +15,7 @@ export default function Home() {
         <ProjectsSection />
         <SkillsSection />
         <TimelineSection />
+        <GitHubSection />
         <ContactSection />
       </main>
     </>

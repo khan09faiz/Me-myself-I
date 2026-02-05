@@ -66,24 +66,6 @@ export function Header() {
   const scrollToSection = (href: string) => {
     setIsMobileMenuOpen(false)
     
-    // Handle navigation to GitHub page
-    if (href === '/github' || href === '#github' || href === 'github') {
-      if (pathname !== '/github') {
-        window.location.href = '/github'
-      }
-      return
-    }
-
-    // If on GitHub page and clicking home sections, go to home first
-    if (pathname === '/github') {
-      if (href === '/' || href === '') {
-        window.location.href = '/'
-      } else {
-        window.location.href = `/${href}`
-      }
-      return
-    }
-    
     // Handle home page navigation
     if (href === '/' || href === '') {
       window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -150,9 +132,7 @@ export function Header() {
             <div className="hidden md:flex items-center space-x-1">
               {NAV_ITEMS.map((item) => {
                 const sectionId = item.href.replace(/^\/?#?/, '')
-                const isActive = 
-                  (pathname === '/github' && item.href === '/github') ||
-                  (pathname === '/' && (activeSection === sectionId || (item.href === '/' && !activeSection)))
+                const isActive = activeSection === sectionId || (item.href === '/' && !activeSection)
 
                 return (
                   <Link
@@ -223,9 +203,7 @@ export function Header() {
                 <nav className="space-y-2">
                   {NAV_ITEMS.map((item, index) => {
                     const sectionId = item.href.replace(/^\/?#?/, '')
-                    const isActive = 
-                      (pathname === '/github' && item.href === '/github') ||
-                      (pathname === '/' && (activeSection === sectionId || (item.href === '/' && !activeSection)))
+                    const isActive = activeSection === sectionId || (item.href === '/' && !activeSection)
 
                     return (
                       <motion.div
