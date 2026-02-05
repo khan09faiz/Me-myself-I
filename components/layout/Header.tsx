@@ -7,6 +7,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
@@ -14,6 +15,7 @@ import { SITE_CONFIG, NAV_ITEMS } from '@/lib/constants'
 import { Button } from '@/components/ui/Button'
 
 export function Header() {
+  const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
@@ -64,6 +66,25 @@ export function Header() {
   const scrollToSection = (href: string) => {
     setIsMobileMenuOpen(false)
     
+    // Handle navigation to GitHub page
+    if (href === '/github' || href === '#github' || href === 'github') {
+      if (pathname !== '/github') {
+        window.location.href = '/github'
+      }
+      return
+    }
+
+    // If on GitHub page and clicking home sections, go to home first
+    if (pathname === '/github') {
+      if (href === '/' || href === '') {
+        window.location.href = '/'
+      } else {
+        window.location.href = `/${href}`
+      }
+      return
+    }
+    
+    // Handle home page navigation
     if (href === '/' || href === '') {
       window.scrollTo({ top: 0, behavior: 'smooth' })
       return
@@ -71,12 +92,6 @@ export function Header() {
 
     // Handle both /section and /#section formats
     const sectionId = href.replace(/^\/?#?/, '')
-    
-    // Special handling for github route
-    if (sectionId === 'github') {
-      window.location.href = '/github'
-      return
-    }
     
     const element = document.getElementById(sectionId)
     if (element) {
@@ -135,7 +150,9 @@ export function Header() {
             <div className="hidden md:flex items-center space-x-1">
               {NAV_ITEMS.map((item) => {
                 const sectionId = item.href.replace(/^\/?#?/, '')
-                const isActive = activeSection === sectionId || (item.href === '/' && !activeSection)
+                const isActive = 
+                  (pathname === '/github' && item.href === '/github') ||
+                  (pathname === '/' && (activeSection === sectionId || (item.href === '/' && !activeSection)))
 
                 return (
                   <Link
@@ -206,7 +223,9 @@ export function Header() {
                 <nav className="space-y-2">
                   {NAV_ITEMS.map((item, index) => {
                     const sectionId = item.href.replace(/^\/?#?/, '')
-                    const isActive = activeSection === sectionId || (item.href === '/' && !activeSection)
+                    const isActive = 
+                      (pathname === '/github' && item.href === '/github') ||
+                      (pathname === '/' && (activeSection === sectionId || (item.href === '/' && !activeSection)))
 
                     return (
                       <motion.div

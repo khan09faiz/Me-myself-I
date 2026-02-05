@@ -6,6 +6,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { Github, Linkedin, Mail, Heart } from 'lucide-react'
 import { SITE_CONFIG, NAV_ITEMS } from '@/lib/constants'
 
@@ -43,18 +44,20 @@ export function Footer() {
           {/* About Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center">
-                <span className="text-primary font-bold text-xl">
-                  {SITE_CONFIG.name.split(' ').map((n) => n[0]).join('')}
-                </span>
+              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/30">
+                <Image
+                  src="/profile.jpeg"
+                  alt={SITE_CONFIG.name}
+                  width={40}
+                  height={40}
+                  className="object-cover w-full h-full scale-110"
+                />
               </div>
               <span className="font-bold text-lg text-foreground">
                 {SITE_CONFIG.name}
               </span>
             </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {SITE_CONFIG.title}. Building innovative solutions with AI/ML and full-stack development.
-            </p>
+
           </div>
 
           {/* Quick Links */}
@@ -114,14 +117,6 @@ export function Footer() {
               )}
             </div>
           </div>
-        </div>
-
-        {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent mb-6" />
-
-        {/* Bottom Bar */}
-        <div className="flex items-center justify-center text-sm text-muted-foreground">
-          <span>© {currentYear} {SITE_CONFIG.name}</span>
         </div>
 
         {/* Back to Top Button */}

@@ -178,22 +178,10 @@ export function Hero() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed"
             >
-              {SITE_CONFIG.person.bio}
+              Hey! I'm Faiz, a builder who thinks in algorithms and dreams in code. By day, I'm exploring ML and reinforcement learning. By night, debugging or diving into stock markets 📈. I love tech, competition, and figuring out how things work. Football is my daily reset. Travel sparks my best ideas.
+              <br /><br />
+              Hala Madrid!!! ⚽️
             </motion.p>
-
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex flex-wrap gap-4 justify-center lg:justify-start"
-            >
-              <Link href="/projects">
-                <Button size="lg" icon={<Rocket className="h-5 w-5" />}>
-                  View Projects
-                </Button>
-              </Link>
-            </motion.div>
 
             {/* Social Links */}
             <motion.div
