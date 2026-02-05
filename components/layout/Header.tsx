@@ -10,7 +10,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Github, Linkedin, Mail } from 'lucide-react'
 import { SITE_CONFIG, NAV_ITEMS } from '@/lib/constants'
 import { Button } from '@/components/ui/Button'
 
@@ -165,6 +165,35 @@ export function Header() {
                   </Link>
                 )
               })}
+            </div>
+
+            {/* Social Icons */}
+            <div className="hidden md:flex items-center gap-3 ml-4">
+              <a
+                href={SITE_CONFIG.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
+                aria-label="GitHub"
+              >
+                <Github className="h-5 w-5" />
+              </a>
+              <a
+                href={SITE_CONFIG.links.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a
+                href={`mailto:${SITE_CONFIG.contact.email}`}
+                className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
+                aria-label="Email"
+              >
+                <Mail className="h-5 w-5" />
+              </a>
             </div>
 
             {/* Mobile Menu Button */}

@@ -91,18 +91,5 @@
       "Statistical Modeling",
       "Data Visualization"
     ]
-  },
-  {
-    "category": "Specialized AI",
-    "proficiency": 90,
-    "color": "#ec4899",
-    "skills": [
-      "Blockchain",
-      "PPO (Proximal Policy Optimization)",
-      "Ollama LLMs",
-      "Raspberry Pi",
-      "Edge AI",
-      "Real-time Processing"
-    ]
   }
 ]

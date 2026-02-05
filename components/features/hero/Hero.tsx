@@ -173,37 +173,6 @@ export function Hero() {
               <br /><br />
               Hala Madrid!!! ⚽️
             </motion.p>
-
-            {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="flex gap-4 justify-center lg:justify-start"
-            >
-              <a
-                href={SITE_CONFIG.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-lg bg-card/30 border border-primary/10 hover:border-primary/30 hover:shadow-glow-sm transition-all duration-300"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-              <a
-                href={SITE_CONFIG.links.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-lg bg-card/30 border border-primary/10 hover:border-primary/30 hover:shadow-glow-sm transition-all duration-300"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                href={`mailto:${SITE_CONFIG.contact.email}`}
-                className="p-3 rounded-lg bg-card/30 border border-primary/10 hover:border-primary/30 hover:shadow-glow-sm transition-all duration-300"
-              >
-                <Mail className="h-5 w-5" />
-              </a>
-            </motion.div>
           </div>
 
           {/* Right Column - Code Card */}
